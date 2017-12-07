@@ -5,7 +5,7 @@ const listStyles = {
 	padding: 0
 };
 
-export default ({ todos, handleToggleTodo }) => (
+export default ({ todos, handleToggleTodo, handleDeleteTodo }) => (
 	<div className="todos">
 		{ todos.length > 0 && (
 			<ul className="todos collection">
@@ -21,6 +21,7 @@ export default ({ todos, handleToggleTodo }) => (
 								name={ name }
 								completed={ completed }
 								handleCheck={ handleToggleTodo }
+								handleDelete={ handleDeleteTodo }
 							/>
 						</li>
 					))

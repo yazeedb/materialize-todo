@@ -24,7 +24,7 @@ export default ({ id, name, completed, handleCheck, handleDelete }) => (
 			{ name }
 		</label>
 
-		<a className="btn-floating red" onClick={ handleDelete }>
+		<a className="btn-floating red" onClick={ () => handleDelete(id) }>
 			<i className="material-icons">&#xE92B;</i>
 		</a>
 	</div>

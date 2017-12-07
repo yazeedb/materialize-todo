@@ -17,6 +17,7 @@ export default class App extends Component {
 		super(props);
 
 		this.addTodo = this.addTodo.bind(this);
+		this.deleteTodo = this.deleteTodo.bind(this);
 		this.toggleTodo = this.toggleTodo.bind(this);
 
 		this.state = {
@@ -28,7 +29,15 @@ export default class App extends Component {
 		const { todos } = this.state;
 		const newTodo = makeTodo(value);
 
-		this.saveTodos([...todos, newTodo]);
+		this.saveTodos([newTodo, ...todos]);
+	}
+
+	deleteTodo(id) {
+		const newTodos = this.state
+			.todos
+			.filter((todo) => todo.id !== id);
+
+		this.saveTodos(newTodos);
 	}
 
 	toggleTodo(id) {
@@ -60,6 +69,7 @@ export default class App extends Component {
 				<TodoCollection
 					todos={ todos }
 					handleToggleTodo={ this.toggleTodo }
+					handleDeleteTodo={ this.deleteTodo }
 				/>
 			</div>
 		);
