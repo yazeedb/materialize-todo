@@ -1,5 +1,6 @@
 import React from 'react';
 import CheckButton from '../CheckButton';
+import EditableLabel from '../EditableLabel';
 
 const style = {
 	div: {
@@ -20,9 +21,7 @@ export default ({ id, name, completed, handleCheck, handleDelete }) => (
 			handleCheck={ () => handleCheck(id) }
 		/>
 
-		<label className="flow-text" style={ style.label }>
-			{ name }
-		</label>
+		<EditableLabel value={ name } style={ style.label } />
 
 		<a className="btn-floating red" onClick={ () => handleDelete(id) }>
 			<i className="material-icons">&#xE92B;</i>
