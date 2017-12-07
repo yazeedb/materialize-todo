@@ -5,3 +5,7 @@
 body {
 	margin: 0;
 }
+
+input::-webkit-input-placeholder {
+	color: black;
+}
