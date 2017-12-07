@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import AddTodo from './AddTodo';
 import TodoCollection from './TodoCollection';
+import getSavedTodos from 'helpers/getSavedTodos';
 import makeTodo from 'helpers/makeTodo';
+import saveTodo from 'helpers/saveTodo';
 
 const style = {
 	textAlign: 'center',
@@ -17,15 +19,17 @@ export default class App extends Component {
 		this.addTodo = this.addTodo.bind(this);
 
 		this.state = {
-			todos: []
+			todos: getSavedTodos() || []
 		};
 	}
 
 	addTodo(value) {
 		const { todos } = this.state;
+		const newTodo = makeTodo(value);
 
-		this.setState({ todos: [...todos, makeTodo(value)] }, () => {
+		this.setState({ todos: [...todos, newTodo] }, () => {
 			console.log('my todos:', this.state.todos);
+			saveTodo(newTodo);
 		});
 	}
 
