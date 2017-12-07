@@ -14,14 +14,11 @@ const style = {
 
 export default ({ id, name, completed, handleCheck, handleDelete }) => (
 	<div className="todo" style={ style.div }>
-		<a className="btn-floating blue">
-			<i className="material-icons">&#xE835;</i>
+		<a className={ `btn-floating ${completed ? 'green' : 'transparent'}` }>
+			<i className="material-icons">check</i>
 		</a>
 
-		<label
-			className="flow-text"
-			style={ style.label }
-		>
+		<label className="flow-text" style={ style.label }>
 			{ name }
 		</label>
 
