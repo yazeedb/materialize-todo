@@ -10,7 +10,8 @@ const style = {
 	},
 
 	label: {
-		lineHeight: '40px'
+		lineHeight: '40px',
+		width: '50%'
 	}
 };
 
