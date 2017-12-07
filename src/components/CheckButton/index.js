@@ -1,7 +1,12 @@
 import React from 'react';
 
-export default ({ check }) => (
-	<a className={ `btn-floating ${check ? 'green' : 'transparent'}` }>
+const makeClassName = (check) => check ? 'green' : 'transparent';
+
+export default ({ check, handleCheck }) => (
+	<a
+		className={ `btn-floating ${makeClassName(check)}` }
+		onClick={ handleCheck }
+	>
 		<i className="material-icons">check</i>
 	</a>
 );

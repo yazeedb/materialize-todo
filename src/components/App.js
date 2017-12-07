@@ -17,6 +17,7 @@ export default class App extends Component {
 		super(props);
 
 		this.addTodo = this.addTodo.bind(this);
+		this.toggleTodo = this.toggleTodo.bind(this);
 
 		this.state = {
 			todos: getSavedTodos() || []
@@ -27,9 +28,24 @@ export default class App extends Component {
 		const { todos } = this.state;
 		const newTodo = makeTodo(value);
 
-		this.setState({ todos: [...todos, newTodo] }, () => {
-			console.log('my todos:', this.state.todos);
-			saveTodo(newTodo);
+		this.saveTodos([...todos, newTodo]);
+	}
+
+	toggleTodo(id) {
+		const { todos } = this.state;
+		const oldTodo = todos.find((todo) => id === todo.id);
+		const updatedTodos = todos.map((todo) => (
+			todo.id === id ?
+				{ ...oldTodo, completed: !oldTodo.completed } : todo
+		));
+
+		this.saveTodos(updatedTodos);
+	}
+
+	saveTodos(todos) {
+		this.setState({ todos }, () => {
+			console.log('new todos:', this.state.todos);
+			saveTodo(this.state.todos);
 		});
 	}
 
@@ -41,7 +57,10 @@ export default class App extends Component {
 				<h1>Todo List</h1>
 
 				<AddTodo handleSubmit={ this.addTodo } />
-				<TodoCollection todos={ todos } />
+				<TodoCollection
+					todos={ todos }
+					handleToggleTodo={ this.toggleTodo }
+				/>
 			</div>
 		);
 	}
