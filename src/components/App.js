@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AddTodo from './AddTodo';
+import makeTodo from 'helpers/makeTodo';
 
 const style = {
 	textAlign: 'center',
@@ -20,11 +21,9 @@ export default class App extends Component {
 	}
 
 	addTodo(value) {
-		console.log('addTodo got value:', value);
-
 		const { todos } = this.state;
 
-		this.setState({ todos: [...todos, value] }, () => {
+		this.setState({ todos: [...todos, makeTodo(value)] }, () => {
 			console.log('my todos:', this.state.todos);
 		});
 	}
