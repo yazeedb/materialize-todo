@@ -1,4 +1,5 @@
 import React from 'react';
+import CheckButton from '../CheckButton';
 
 const style = {
 	div: {
@@ -14,9 +15,7 @@ const style = {
 
 export default ({ id, name, completed, handleCheck, handleDelete }) => (
 	<div className="todo" style={ style.div }>
-		<a className={ `btn-floating ${completed ? 'green' : 'transparent'}` }>
-			<i className="material-icons">check</i>
-		</a>
+		<CheckButton check={ completed } />
 
 		<label className="flow-text" style={ style.label }>
 			{ name }
