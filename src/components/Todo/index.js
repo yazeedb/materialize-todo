@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default ({ id, name, completed }) => (
-	<div className="todo">
+	<div>
 		{ id }
 		{ name }
 		{ completed }
