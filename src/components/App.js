@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AddTodo from './AddTodo';
+import TodoCollection from './TodoCollection';
 import makeTodo from 'helpers/makeTodo';
 
 const style = {
@@ -29,12 +30,14 @@ export default class App extends Component {
 	}
 
 	render() {
+		const { todos } = this.state;
+
 		return (
 			<div className="app" style={ style }>
 				<h1>Todo List</h1>
-				<AddTodo
-					handleSubmit={ this.addTodo }
-				/>
+
+				<AddTodo handleSubmit={ this.addTodo } />
+				<TodoCollection todos={ todos } />
 			</div>
 		);
 	}
