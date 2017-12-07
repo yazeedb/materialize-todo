@@ -9,3 +9,15 @@ body {
 input::-webkit-input-placeholder {
 	color: black;
 }
+
+input:-moz-placeholder {
+	color: black;
+}
+
+input::-moz-placeholder {
+	color: black;
+}
+
+input:-ms-input-placeholder {
+	color: black;
+}
