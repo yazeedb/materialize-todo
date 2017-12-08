@@ -1,15 +1,20 @@
-import { assoc, equals, ifElse, pipe, prop } from 'ramda';
-import { ADD_TODO, TOGGLE_TODO } from 'actions/todo';
+import { assoc, equals, ifElse, not, pipe, prop } from 'ramda';
+import { ADD_TODO, DELETE_TODO, TOGGLE_TODO } from 'actions/todo';
 
 export default (state, action) => {
-	console.log('todo reducer state:', state);
-	console.log('todo reducer got this action:', action);
-
 	switch (action.type) {
 			case ADD_TODO:
 				return {
 					...state,
 					todos: [...state.todos, action.todo]
+				};
+
+			case DELETE_TODO:
+				return {
+					...state,
+					todos: state.todos.filter(
+						pipe(prop('id'), equals(action.id), not)
+					)
 				};
 
 			case TOGGLE_TODO:

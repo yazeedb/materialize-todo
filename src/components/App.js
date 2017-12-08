@@ -1,10 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import AddTodo from './AddTodo';
 import TodoCollection from './TodoCollection';
-import getSavedTodos from 'helpers/getSavedTodos';
-import makeTodo from 'helpers/makeTodo';
-import saveTodo from 'helpers/saveTodo';
 import * as todoActions from 'actions/todo';
 
 const style = {
@@ -14,67 +11,19 @@ const style = {
 	width: '66%'
 };
 
-class App extends Component {
-	constructor(props) {
-		super(props);
+const App = ({ todos, addTodo, deleteTodo, toggleTodo }) => (
+	<div className="app" style={ style }>
+		<h1>Todo List</h1>
 
-		this.addTodo = this.addTodo.bind(this);
-		this.deleteTodo = this.deleteTodo.bind(this);
-		this.toggleTodo = this.toggleTodo.bind(this);
-	}
+		<AddTodo handleSubmit={ addTodo } />
 
-	addTodo(value) {
-		const { todos } = this.state;
-		const newTodo = makeTodo(value);
-
-		this.saveTodos([newTodo, ...todos]);
-	}
-
-	deleteTodo(id) {
-		const newTodos = this.state
-			.todos
-			.filter((todo) => todo.id !== id);
-
-		this.saveTodos(newTodos);
-	}
-
-	toggleTodo(id) {
-		const { todos } = this.state;
-		const oldTodo = todos.find((todo) => id === todo.id);
-		const updatedTodos = todos.map((todo) => (
-			todo.id === id ?
-				{ ...oldTodo, completed: !oldTodo.completed } : todo
-		));
-
-		this.saveTodos(updatedTodos);
-	}
-
-	saveTodos(todos) {
-		this.setState({ todos }, () => {
-			console.log('new todos:', this.state.todos);
-			saveTodo(this.state.todos);
-		});
-	}
-
-	render() {
-		const { todos, addTodo, toggleTodo } = this.props;
-		console.log('app props:', this.props);
-
-		return (
-			<div className="app" style={ style }>
-				<h1>Todo List</h1>
-
-				<AddTodo handleSubmit={ addTodo } />
-
-				<TodoCollection
-					todos={ todos }
-					handleToggleTodo={ toggleTodo }
-					handleDeleteTodo={ this.deleteTodo }
-				/>
-			</div>
-		);
-	}
-}
+		<TodoCollection
+			todos={ todos }
+			handleDeleteTodo={ deleteTodo }
+			handleToggleTodo={ toggleTodo }
+		/>
+	</div>
+);
 
 const mapStateToProps = (state) => state;
 
