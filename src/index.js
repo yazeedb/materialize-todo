@@ -5,6 +5,7 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import rootReducer from 'reducers/root';
 import getSavedTodos from './helpers/getSavedTodos';
+import persistState from './middleware/persistState';
 import App from './components/App';
 import './global.scss';
 
@@ -12,7 +13,11 @@ const initialState = {
 	todos: getSavedTodos() || []
 };
 
-const store = createStore(rootReducer, initialState, applyMiddleware(thunk));
+const store = createStore(
+	rootReducer,
+	initialState,
+	applyMiddleware(thunk, persistState)
+);
 
 const ConnectedApp = () => (
 	<Provider store={ store }>
