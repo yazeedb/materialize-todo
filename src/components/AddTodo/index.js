@@ -45,6 +45,7 @@ export default class AddTodo extends Component {
 					style={ style }
 					value={ value }
 					onChange={ this.updateInputValue }
+					autoFocus
 				/>
 			</form>
 		);
