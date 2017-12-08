@@ -14,6 +14,7 @@ module.exports = {
 		alias: {
 			src: root('src'),
 			actions: root('src/actions'),
+			middleware: root('src/middleware'),
 			reducers: root('src/reducers'),
 			components: root('src/components'),
 			shared: root('src/components/shared'),
