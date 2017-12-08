@@ -1,4 +1,4 @@
-import { assoc, equals, ifElse, not, pipe, prop } from 'ramda';
+import { assoc, equals, identity, ifElse, not, pipe, prop } from 'ramda';
 import { ADD_TODO, DELETE_TODO, TOGGLE_TODO } from 'actions/todo';
 
 export default (state, action) => {
@@ -24,7 +24,7 @@ export default (state, action) => {
 						ifElse(
 							pipe(prop('id'), equals(action.id)),
 							assoc('completed', !action.completed),
-							(todo) => todo
+							identity
 						)
 					)
 				};
