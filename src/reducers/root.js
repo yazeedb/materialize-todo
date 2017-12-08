@@ -1,5 +1,18 @@
-import { combineReducers } from 'redux';
+import getSavedTodos from 'helpers/getSavedTodos';
 
-export default combineReducers({
-	sample: () => null
-});
+const initialState = {
+	todos: getSavedTodos() || []
+};
+
+export default (state = initialState, action) => {
+	switch (action.type) {
+			case 'ADD_TODO':
+				return {
+					...state,
+					todos: [...state.todos, action.todo]
+				};
+
+			default:
+				return state;
+	}
+};
