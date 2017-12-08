@@ -57,7 +57,7 @@ class App extends Component {
 	}
 
 	render() {
-		const { todos, addTodo } = this.props;
+		const { todos, addTodo, toggleTodo } = this.props;
 		console.log('app props:', this.props);
 
 		return (
@@ -68,7 +68,7 @@ class App extends Component {
 
 				<TodoCollection
 					todos={ todos }
-					handleToggleTodo={ this.toggleTodo }
+					handleToggleTodo={ toggleTodo }
 					handleDeleteTodo={ this.deleteTodo }
 				/>
 			</div>

@@ -19,7 +19,7 @@ export default ({ id, name, completed, handleCheck, handleDelete }) => (
 	<div className="todo" style={ style.div }>
 		<CheckButton
 			check={ completed }
-			handleCheck={ () => handleCheck(id) }
+			handleCheck={ () => handleCheck(id, completed) }
 		/>
 
 		<EditableLabel value={ name } style={ style.label } />
