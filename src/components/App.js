@@ -5,6 +5,7 @@ import TodoCollection from './TodoCollection';
 import getSavedTodos from 'helpers/getSavedTodos';
 import makeTodo from 'helpers/makeTodo';
 import saveTodo from 'helpers/saveTodo';
+import * as todoActions from 'actions/todo';
 
 const style = {
 	textAlign: 'center',
@@ -20,10 +21,6 @@ class App extends Component {
 		this.addTodo = this.addTodo.bind(this);
 		this.deleteTodo = this.deleteTodo.bind(this);
 		this.toggleTodo = this.toggleTodo.bind(this);
-
-		this.state = {
-			todos: getSavedTodos() || []
-		};
 	}
 
 	addTodo(value) {
@@ -60,13 +57,15 @@ class App extends Component {
 	}
 
 	render() {
-		const { todos } = this.state;
+		const { todos, addTodo } = this.props;
+		console.log('app props:', this.props);
 
 		return (
 			<div className="app" style={ style }>
 				<h1>Todo List</h1>
 
-				<AddTodo handleSubmit={ this.addTodo } />
+				<AddTodo handleSubmit={ addTodo } />
+
 				<TodoCollection
 					todos={ todos }
 					handleToggleTodo={ this.toggleTodo }
@@ -79,4 +78,4 @@ class App extends Component {
 
 const mapStateToProps = (state) => state;
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, todoActions)(App);

@@ -1,11 +1,8 @@
-import getSavedTodos from 'helpers/getSavedTodos';
 import { ADD_TODO } from 'actions/todo';
 
-const initialState = {
-	todos: getSavedTodos() || []
-};
-
-export default (state = initialState, action) => {
+export default (state, action) => {
+	console.log('todo reducer state:', state);
+	console.log('todo reducer got this action:', action);
 	switch (action.type) {
 			case ADD_TODO:
 				return {
