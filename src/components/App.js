@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import AddTodo from './AddTodo';
 import TodoCollection from './TodoCollection';
 import getSavedTodos from 'helpers/getSavedTodos';
@@ -12,7 +13,7 @@ const style = {
 	width: '66%'
 };
 
-export default class App extends Component {
+class App extends Component {
 	constructor(props) {
 		super(props);
 
@@ -75,3 +76,7 @@ export default class App extends Component {
 		);
 	}
 }
+
+const mapStateToProps = (state) => state;
+
+export default connect(mapStateToProps)(App);
