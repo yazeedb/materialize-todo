@@ -13,7 +13,11 @@ export default (state, action) => {
 				return {
 					...state,
 					todos: state.todos.filter(
-						pipe(prop('id'), equals(action.id), not)
+						pipe(
+							prop('id'),
+							equals(action.id),
+							not
+						)
 					)
 				};
 
