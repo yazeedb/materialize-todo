@@ -1,5 +1,12 @@
-import { assoc, equals, identity, ifElse, not, pipe, prop } from 'ramda';
+import {
+	assoc,
+	identity,
+	ifElse,
+	reject
+} from 'ramda';
 import { ADD_TODO, DELETE_TODO, TOGGLE_TODO } from 'actions/todo';
+
+const matchTodoId = (action) => (todo) => action.id === todo.id;
 
 export default (state, action) => {
 	switch (action.type) {
@@ -12,13 +19,7 @@ export default (state, action) => {
 			case DELETE_TODO:
 				return {
 					...state,
-					todos: state.todos.filter(
-						pipe(
-							prop('id'),
-							equals(action.id),
-							not
-						)
-					)
+					todos: reject(matchTodoId(action))(state.todos)
 				};
 
 			case TOGGLE_TODO:
@@ -26,7 +27,7 @@ export default (state, action) => {
 					...state,
 					todos: state.todos.map(
 						ifElse(
-							pipe(prop('id'), equals(action.id)),
+							matchTodoId(action),
 							assoc('completed', !action.completed),
 							identity
 						)
