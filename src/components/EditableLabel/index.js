@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { propEq, when } from 'ramda';
 
-const doIfEnter = (fn) => when(
-	propEq('key', 'Enter'),
-	fn
-);
+const doIfEnter = when(propEq('key', 'Enter'));
 const toggleEditing = (state) => ({
 	editing: !state.editing
 });
