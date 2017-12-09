@@ -15,14 +15,27 @@ const style = {
 	}
 };
 
-export default ({ id, name, completed, handleCheck, handleDelete }) => (
+export default ({
+	id,
+	name,
+	completed,
+	handleCheck,
+	handleDelete,
+	handleUpdate
+}) => (
 	<div className="todo" style={ style.div }>
 		<CheckButton
 			check={ completed }
-			handleCheck={ () => handleCheck(id, completed) }
+			handleCheck={ () => handleCheck(!completed) }
 		/>
 
-		<EditableLabel value={ name } style={ style.label } />
+		<EditableLabel
+			handleUpdate={ handleUpdate }
+			className="flow-text"
+			style={ style.label }
+		>
+			{ name }
+		</EditableLabel>
 
 		<a className="btn-floating red" onClick={ () => handleDelete(id) }>
 			<i className="material-icons">&#xE92B;</i>

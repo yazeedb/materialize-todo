@@ -4,11 +4,13 @@ import {
 	ifElse,
 	reject
 } from 'ramda';
-import { ADD_TODO, DELETE_TODO, TOGGLE_TODO } from 'actions/todo';
+import { ADD_TODO, DELETE_TODO, UPDATE_TODO } from 'actions/todo';
 
 const matchTodoId = (action) => (todo) => action.id === todo.id;
 
 export default (state, action) => {
+	console.log('got this state:', state);
+	console.log('got this action:', action);
 	switch (action.type) {
 			case ADD_TODO:
 				return {
@@ -22,13 +24,13 @@ export default (state, action) => {
 					todos: reject(matchTodoId(action))(state.todos)
 				};
 
-			case TOGGLE_TODO:
+			case UPDATE_TODO:
 				return {
 					...state,
 					todos: state.todos.map(
 						ifElse(
 							matchTodoId(action),
-							assoc('completed', !action.completed),
+							assoc(action.prop, action.newValue),
 							identity
 						)
 					)
