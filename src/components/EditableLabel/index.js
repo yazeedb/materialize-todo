@@ -38,6 +38,7 @@ export default class EditableLabel extends Component {
 		if (editing) {
 			return (
 				<input
+					autoFocus
 					type="text"
 					defaultValue={ children }
 					onKeyUp={ doIfEnter(this.updateLabel) }
