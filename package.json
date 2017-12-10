@@ -7,8 +7,7 @@
     "server": "nodemon server.js",
     "start": "webpack",
     "watch": "webpack --watch",
-    "build:prod": "webpack -p && npm run server",
-    "heroku-postbuild": "npm i webpack && npm run build:prod"
+    "postinstall": "webpack -p && npm run server"
   },
   "engines": {
     "node": "6.11.1"
