@@ -6,7 +6,8 @@
   "scripts": {
     "server": "nodemon server.js",
     "start": "webpack",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "postinstall": "npm start && npm run server"
   },
   "keywords": [],
   "author": "",
