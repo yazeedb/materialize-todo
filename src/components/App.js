@@ -11,7 +11,7 @@ const style = {
 	width: '66%'
 };
 
-const App = ({ todos, addTodo, deleteTodo, updateTodo }) => (
+const App = ({ todos, addTodo, deleteTodo, changeTodoName, toggleTodo }) => (
 	<div className="app" style={ style }>
 		<h1>Todo List</h1>
 
@@ -20,7 +20,8 @@ const App = ({ todos, addTodo, deleteTodo, updateTodo }) => (
 		<TodoCollection
 			todos={ todos }
 			handleDeleteTodo={ deleteTodo }
-			handleUpdateTodo={ updateTodo }
+			handleChangeTodoName={ changeTodoName }
+			handleToggleTodo={ toggleTodo }
 		/>
 	</div>
 );

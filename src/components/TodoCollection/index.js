@@ -8,7 +8,8 @@ const listStyles = {
 export default ({
 	todos,
 	handleDeleteTodo,
-	handleUpdateTodo
+	handleChangeTodoName,
+	handleToggleTodo
 }) => (
 	<div className="todos">
 		{ todos.length > 0 && (
@@ -24,11 +25,9 @@ export default ({
 								id={ id }
 								name={ name }
 								completed={ completed }
-								handleCheck={
-									handleUpdateTodo(id, 'completed')
-								}
+								handleCheck={ handleToggleTodo(id) }
 								handleDelete={ handleDeleteTodo }
-								handleUpdate={ handleUpdateTodo(id, 'name') }
+								handleUpdate={ handleChangeTodoName(id) }
 							/>
 						</li>
 					))
