@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "server": "nodemon server.js",
-    "start": "webpack",
+    "start": "node server.js",
     "watch": "webpack --watch",
-    "postinstall": "webpack -p && npm run server"
+    "postinstall": "webpack -p"
   },
   "engines": {
     "node": "6.11.1"
