@@ -7,7 +7,7 @@
     "server": "nodemon server.js",
     "start": "webpack",
     "watch": "webpack --watch",
-    "postinstall": "webpack && npm run server"
+    "postinstall": "webpack -p && npm run server"
   },
   "engines": {
     "node": "6.11.1"
