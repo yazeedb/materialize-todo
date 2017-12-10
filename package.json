@@ -10,8 +10,7 @@
     "postinstall": "npm start && npm run server"
   },
   "engines": {
-    "node": "6.11.1",
-	"npm": "3.10.3"
+    "node": "6.11.1"
   },
   "keywords": [],
   "author": "",
