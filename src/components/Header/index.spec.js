@@ -8,9 +8,10 @@ const makeWrapper = (props) => mount(<Header { ...props } />);
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('Header', () => {
-	it('displays text inside of an <h1 />', () => {
+	it('renders text as an <h1 />', () => {
 		const wrapper = makeWrapper({ text: 'Hello World'});
+		const h1 = wrapper.find('h1');
 
-		expect(wrapper.text()).toBe('Hello World');
+		expect(h1.text()).toBe('Hello World');
 	});
 });
