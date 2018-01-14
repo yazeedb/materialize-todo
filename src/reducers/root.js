@@ -8,8 +8,6 @@ import { ADD_TODO, DELETE_TODO, UPDATE_TODO } from 'actions/todo';
 const matchTodoId = (action) => (todo) => action.id === todo.id;
 
 export default (state, action) => {
-	console.log('got this state:', state);
-	console.log('got this action:', action);
 	switch (action.type) {
 			case ADD_TODO:
 				return {
