@@ -1,8 +1,7 @@
 import {
 	assoc,
-	identity,
-	ifElse,
-	reject
+	reject,
+	when
 } from 'ramda';
 import { ADD_TODO, DELETE_TODO, UPDATE_TODO } from 'actions/todo';
 
@@ -28,10 +27,9 @@ export default (state, action) => {
 				return {
 					...state,
 					todos: state.todos.map(
-						ifElse(
+						when(
 							matchTodoId(action),
-							assoc(action.prop, action.newValue),
-							identity
+							assoc(action.prop, action.newValue)
 						)
 					)
 				};
