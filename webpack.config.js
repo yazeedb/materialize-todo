@@ -15,6 +15,7 @@ module.exports = {
 			src: root('src'),
 			actions: root('src/actions'),
 			middleware: root('src/middleware'),
+			ducks: root('src/ducks'),
 			reducers: root('src/reducers'),
 			components: root('src/components'),
 			shared: root('src/components/shared'),
